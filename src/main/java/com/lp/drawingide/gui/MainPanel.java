@@ -1,5 +1,7 @@
 package com.lp.drawingide.gui;
 
+import com.lp.drawingide.action.ActionClear;
+import com.lp.drawingide.action.ActionExit;
 import com.lp.drawingide.action.ActionTypeText;
 import lombok.Data;
 import net.miginfocom.swing.MigLayout;
@@ -19,8 +21,9 @@ public class MainPanel extends JXFrame {
 
     private com.lp.drawingide.gui.Canvas canvas;
     private ConsoleOutput consoleOutput;
-    private KeyListener keyListener;
+
     private ActionTypeText actionTypeText;
+    private ActionClear actionClear;
 
     public MainPanel() {
         super();
@@ -50,22 +53,31 @@ public class MainPanel extends JXFrame {
         setLocationRelativeTo(null);
         actionTypeText = new ActionTypeText();
         setFocusable(true);
-        keyListener = new KeyListener() {
+        actionClear = new ActionClear();
+        addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent keyEvent) {
+
                 actionTypeText.actionPerformed(new ActionEvent(keyEvent, 1, null));
             }
 
             @Override
             public void keyPressed(KeyEvent keyEvent) {
+                if (keyEvent.getKeyCode() == keyEvent.VK_Q) {
+                    (new ActionExit()).actionPerformed(null);
 
+                }
+                if (keyEvent.getKeyCode() == keyEvent.VK_N) {
+                    actionClear.actionPerformed(null);
+
+                }
             }
 
             @Override
             public void keyReleased(KeyEvent keyEvent) {
 
             }
-        };
-        addKeyListener(keyListener);
+        });
+
     }
 }

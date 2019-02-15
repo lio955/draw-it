@@ -25,4 +25,10 @@ public class Workbench {
         }
         return instance;
     }
+
+    public void clear() {
+        shapes.clear();
+        lastShape = null;
+        selectedShape = null;
+    }
 }
