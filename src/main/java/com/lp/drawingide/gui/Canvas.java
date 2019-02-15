@@ -75,8 +75,10 @@ public class Canvas extends JXPanel {
             public void mouseReleased(MouseEvent e) {
                 Workbench.getInstance().getSketch().add(currentStroke);
                 actionDrawShape.actionPerformed(null);
+                Workbench.getInstance().getSketch().remove(currentStroke);
+                currentStroke = new srl.core.sketch.Stroke();
+                undo();
 
-                currentStroke.getPoints().clear();
                 if (g != null) {
                     repaint();
                 }

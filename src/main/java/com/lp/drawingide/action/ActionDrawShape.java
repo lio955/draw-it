@@ -16,11 +16,9 @@ public class ActionDrawShape extends AbstractAction {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
 
-
         IRecognitionResult result = recognizer.recognize(Workbench.getInstance().getSketch().getFirstStroke());
 
-        if (result.getBestShape().getInterpretation().label.equalsIgnoreCase("circle"))
-            Application.getInstance().getMainPanel().getConsoleOutput().addText("Correctly recognized as a circle");
+        Application.getInstance().getMainPanel().getConsoleOutput().addText("paleo says: " + result.getBestShape().getInterpretation().label);
 
     }
 }
