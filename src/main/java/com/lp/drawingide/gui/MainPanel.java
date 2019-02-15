@@ -63,12 +63,14 @@ public class MainPanel extends JXFrame {
 
             @Override
             public void keyPressed(KeyEvent keyEvent) {
-                if (keyEvent.getKeyCode() == keyEvent.VK_Q) {
+                if (keyEvent.getKeyCode() == keyEvent.VK_Q
+                        && keyEvent.isControlDown()) {
                     (new ActionExit()).actionPerformed(null);
 
                 }
-                if (keyEvent.getKeyCode() == keyEvent.VK_N) {
-                    actionClear.actionPerformed(null);
+                if (keyEvent.getKeyCode() == keyEvent.VK_N
+                        && keyEvent.isControlDown()) {
+                     actionClear.actionPerformed(null);
 
                 }
             }

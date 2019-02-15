@@ -16,8 +16,7 @@ public class SketchToGraph {
         if (!Util.LINE.equals(abstractShape.getShape().getInterpretation().label)
                 && !Util.ARROW.equals(abstractShape.getShape().getInterpretation().label)) {
             unknownNode = new UnknownNode();
-            unknownNode.setEnclosing(abstractShape.getEnclosing());
-            unknownNode.setUnstructuredData(abstractShape.getText());
+            unknownNode.setAbstractShape(abstractShape);
 
         }
         return unknownNode;
@@ -28,11 +27,12 @@ public class SketchToGraph {
         if (Util.LINE.equals(abstractShape.getShape().getInterpretation().label)
                 || Util.ARROW.equals(abstractShape.getShape().getInterpretation().label)) {
             unknownRelationship = new UnknownRelationship();
+            unknownRelationship.setAbstractShape(abstractShape);
             for (UnknownNode unknownNode : unknownNodes) {
-                if (Util.isInsideEnclosing(unknownNode.getEnclosing(), abstractShape.getPointA().getX(), abstractShape.getPointA().getY())) {
+                if (Util.isInsideEnclosing(unknownNode.getAbstractShape().getEnclosing(), abstractShape.getPointA().getX(), abstractShape.getPointA().getY())) {
                     unknownRelationship.setNodeA(unknownNode);
                 }
-                if (Util.isInsideEnclosing(unknownNode.getEnclosing(), abstractShape.getPointB().getX(), abstractShape.getPointB().getY())) {
+                if (Util.isInsideEnclosing(unknownNode.getAbstractShape().getEnclosing(), abstractShape.getPointB().getX(), abstractShape.getPointB().getY())) {
                     unknownRelationship.setNodeB(unknownNode);
                 }
             }

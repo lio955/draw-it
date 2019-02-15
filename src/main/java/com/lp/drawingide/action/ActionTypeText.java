@@ -1,6 +1,7 @@
 package com.lp.drawingide.action;
 
 import com.lp.drawingide.application.Application;
+import com.lp.drawingide.generator.CypherDataGenerator;
 import com.lp.drawingide.model.AbstractShape;
 import com.lp.drawingide.model.Workbench;
 
@@ -15,11 +16,7 @@ public class ActionTypeText extends AbstractAction {
         AbstractShape abstractShape = Workbench.getInstance().getSelectedShape();
         if (abstractShape != null) {
             abstractShape.setText(abstractShape.getText() + keyEvent.getKeyChar());
-            Application.getInstance().getMainPanel().getConsoleOutput().addText(renderText(abstractShape));
+            Application.getInstance().getMainPanel().getConsoleOutput().addText(CypherDataGenerator.translateToCypher(Workbench.getInstance().getUnknownGraph()));
         }
-    }
-
-    private String renderText(final AbstractShape abstractShape) {
-        return abstractShape.getShape().getInterpretation().label + " {" + abstractShape.getText() + "}";
     }
 }
