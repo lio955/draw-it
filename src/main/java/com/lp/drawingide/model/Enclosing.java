@@ -1,12 +1,30 @@
 package com.lp.drawingide.model;
 
-import lombok.Data;
+import lombok.Setter;
 
-@Data
+@Setter
 public class Enclosing {
-    private double xMin;
-    private double yMin;
+    private static int EPSILON = 20;
 
-    private double xMax;
-    private double yMax;
+    private int xMin;
+    private int yMin;
+
+    private int xMax;
+    private int yMax;
+
+    public int getXMin() {
+        return xMin - EPSILON;
+    }
+
+    public int getYMin() {
+        return yMin - EPSILON;
+    }
+
+    public int getXMax() {
+        return xMax + EPSILON;
+    }
+
+    public int getYMax() {
+        return yMax + EPSILON;
+    }
 }

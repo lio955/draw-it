@@ -1,6 +1,7 @@
 package com.lp.drawingide.gui;
 
 import com.lp.drawingide.action.ActionDrawShape;
+import com.lp.drawingide.model.Enclosing;
 import com.lp.drawingide.model.Workbench;
 import org.jdesktop.swingx.JXPanel;
 import org.openawt.draw.awt.ShapePainter;
@@ -82,6 +83,8 @@ public class Canvas extends JXPanel {
                 currentStroke = new srl.core.sketch.Stroke();
                 undo();
                 ShapePainter.draw(g, Workbench.getInstance().getLastShape().getShape().toSVGShape(),drawStyle);
+                Enclosing enclosing=Workbench.getInstance().getLastShape().getEnclosing();
+                g.drawRect(enclosing.getXMin(), enclosing.getYMin(), enclosing.getXMax()-enclosing.getXMin(), enclosing.getYMax()-enclosing.getYMin());
                 if (g != null) {
                     repaint();
                 }

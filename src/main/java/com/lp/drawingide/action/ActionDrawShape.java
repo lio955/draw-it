@@ -2,7 +2,6 @@ package com.lp.drawingide.action;
 
 import com.lp.drawingide.application.Application;
 import com.lp.drawingide.model.AbstractShape;
-import com.lp.drawingide.model.InvalidShapeException;
 import com.lp.drawingide.model.Workbench;
 import srl.recognition.IRecognitionResult;
 import srl.recognition.paleo.PaleoConfig;
@@ -18,14 +17,13 @@ public class ActionDrawShape extends AbstractAction {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         if (Workbench.getInstance().getSketch().getStrokes().size() > 0) {
-            IRecognitionResult result = recognizer.recognize(Workbench.getInstance().getSketch().getFirstStroke());
-            Application.getInstance().getMainPanel().getConsoleOutput().addText("paleo says: " + result.getBestShape().getInterpretation().label);
-
             try {
+                IRecognitionResult result = recognizer.recognize(Workbench.getInstance().getSketch().getFirstStroke());
+                Application.getInstance().getMainPanel().getConsoleOutput().addText("paleo says: " + result.getBestShape().getInterpretation().label);
                 AbstractShape abstractShape = new AbstractShape(result.getBestShape());
                 Workbench.getInstance().getShapes().add(abstractShape);
                 Workbench.getInstance().setLastShape(abstractShape);
-            } catch (InvalidShapeException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
