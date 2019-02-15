@@ -1,5 +1,6 @@
 package com.lp.drawingide.action;
 
+import com.lp.drawingide.application.Application;
 import com.lp.drawingide.model.Workbench;
 import srl.recognition.IRecognitionResult;
 import srl.recognition.paleo.PaleoConfig;
@@ -18,8 +19,8 @@ public class ActionDrawShape extends AbstractAction {
 
         IRecognitionResult result = recognizer.recognize(Workbench.getInstance().getSketch().getFirstStroke());
 
-        if(result.getBestShape().getInterpretation().label.equalsIgnoreCase("circle"))
-            System.out.println("Correctly recognized as a circle");
+        if (result.getBestShape().getInterpretation().label.equalsIgnoreCase("circle"))
+            Application.getInstance().getMainPanel().getConsoleOutput().addText("Correctly recognized as a circle");
 
     }
 }
