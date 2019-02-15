@@ -16,7 +16,9 @@ public class ActionDrawShape extends AbstractAction {
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        if (Workbench.getInstance().getSketch().getStrokes().size() > 0) {
+        Workbench.getInstance().setLastShape(null);
+        if (Workbench.getInstance().getSketch().getStrokes().size() > 0
+                && Workbench.getInstance().getSketch().getFirstStroke().getPoints().size() > 0) {
             try {
                 IRecognitionResult result = recognizer.recognize(Workbench.getInstance().getSketch().getFirstStroke());
                 Application.getInstance().getMainPanel().getConsoleOutput().addText("paleo says: " + result.getBestShape().getInterpretation().label);

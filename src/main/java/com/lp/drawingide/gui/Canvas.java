@@ -82,9 +82,11 @@ public class Canvas extends JXPanel {
                 Workbench.getInstance().getSketch().remove(currentStroke);
                 currentStroke = new srl.core.sketch.Stroke();
                 undo();
-                ShapePainter.draw(g, Workbench.getInstance().getLastShape().getShape().toSVGShape(),drawStyle);
-                Enclosing enclosing=Workbench.getInstance().getLastShape().getEnclosing();
-                g.drawRect(enclosing.getXMin(), enclosing.getYMin(), enclosing.getXMax()-enclosing.getXMin(), enclosing.getYMax()-enclosing.getYMin());
+                if (Workbench.getInstance().getLastShape() != null){
+                    ShapePainter.draw(g, Workbench.getInstance().getLastShape().getShape().toSVGShape(), drawStyle);
+                    Enclosing enclosing = Workbench.getInstance().getLastShape().getEnclosing();
+                    g.drawRect(enclosing.getXMin(), enclosing.getYMin(), enclosing.getXMax() - enclosing.getXMin(), enclosing.getYMax() - enclosing.getYMin());
+                }
                 if (g != null) {
                     repaint();
                 }
@@ -113,6 +115,7 @@ public class Canvas extends JXPanel {
             }
 
         };
+
 
         addMouseListener(listener);
         addMouseMotionListener(motion);

@@ -3,6 +3,7 @@ package com.lp.drawingide.model;
 import lombok.Data;
 import srl.core.sketch.Sketch;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 

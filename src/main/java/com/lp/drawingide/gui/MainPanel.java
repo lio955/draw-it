@@ -6,6 +6,8 @@ import org.jdesktop.swingx.JXFrame;
 import org.jdesktop.swingx.JXPanel;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 @Data
 public class MainPanel extends JXFrame {
@@ -15,7 +17,7 @@ public class MainPanel extends JXFrame {
 
     private com.lp.drawingide.gui.Canvas canvas;
     private ConsoleOutput consoleOutput;
-
+    private KeyListener keyListener;
 
     public MainPanel() {
         super();
@@ -43,5 +45,24 @@ public class MainPanel extends JXFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         pack();
         setLocationRelativeTo(null);
+
+        setFocusable(true);
+        keyListener = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent keyEvent) {
+                System.out.println(keyEvent.getKeyChar());
+            }
+
+            @Override
+            public void keyPressed(KeyEvent keyEvent) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent keyEvent) {
+
+            }
+        };
+        addKeyListener(keyListener);
     }
 }

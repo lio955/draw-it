@@ -6,8 +6,10 @@ import srl.core.sketch.Shape;
 
 @Data
 public class AbstractShape {
-    protected Enclosing enclosing;
-    protected Shape shape;
+    private Enclosing enclosing;
+    private Shape shape;
+    private String text;
+
 
     public AbstractShape(final Shape shape) throws InvalidShapeException {
         this.shape = shape;
