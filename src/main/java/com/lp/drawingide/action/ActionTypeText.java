@@ -13,8 +13,10 @@ public class ActionTypeText extends AbstractAction {
     public void actionPerformed(ActionEvent actionEvent) {
         KeyEvent keyEvent = (KeyEvent) actionEvent.getSource();
         AbstractShape abstractShape = Workbench.getInstance().getSelectedShape();
-        abstractShape.setText(abstractShape.getText() + keyEvent.getKeyChar());
-        Application.getInstance().getMainPanel().getConsoleOutput().addText(renderText(abstractShape));
+        if (abstractShape != null) {
+            abstractShape.setText(abstractShape.getText() + keyEvent.getKeyChar());
+            Application.getInstance().getMainPanel().getConsoleOutput().addText(renderText(abstractShape));
+        }
     }
 
     private String renderText(final AbstractShape abstractShape) {

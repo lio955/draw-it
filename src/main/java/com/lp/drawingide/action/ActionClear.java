@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 public class ActionClear extends AbstractAction {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
+        System.out.println("Clear");
         Workbench.getInstance().clear();
         Application.getInstance().getMainPanel().getCanvas().clear();
         Application.getInstance().getMainPanel().getConsoleOutput().getJxTextArea().setText("");

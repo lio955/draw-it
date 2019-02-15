@@ -2,8 +2,8 @@ package com.lp.drawingide.action;
 
 import com.lp.drawingide.application.Application;
 import com.lp.drawingide.model.AbstractShape;
-import com.lp.drawingide.model.Enclosing;
 import com.lp.drawingide.model.Workbench;
+import com.lp.drawingide.util.Util;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -18,7 +18,7 @@ public class ActionSelectShape extends AbstractAction {
         AbstractShape selectedShape = null;
         int i = 0;
         while (selectedShape == null && i < Workbench.getInstance().getShapes().size()) {
-            if (isInsideEnclosing(Workbench.getInstance().getShapes().get(i).getEnclosing(), x, y)) {
+            if (Util.isInsideEnclosing(Workbench.getInstance().getShapes().get(i).getEnclosing(), x, y)) {
                 selectedShape = Workbench.getInstance().getShapes().get(i);
             }
             i++;
@@ -30,8 +30,5 @@ public class ActionSelectShape extends AbstractAction {
 
     }
 
-    private boolean isInsideEnclosing(final Enclosing enclosing, int x, int y) {
-        return enclosing.getXMin() < x && x < enclosing.getXMax() && enclosing.getYMin() < y && y < enclosing.getYMax();
 
-    }
 }

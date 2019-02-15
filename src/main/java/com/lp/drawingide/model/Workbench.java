@@ -12,11 +12,13 @@ public class Workbench {
     private AbstractShape lastShape;
     private AbstractShape selectedShape;
     private Sketch sketch;
+    private UnknownGraph unknownGraph;
     private static Workbench instance;
 
     private Workbench() {
         shapes = new ArrayList<>();
         sketch = new Sketch();
+        unknownGraph = new UnknownGraph();
     }
 
     public static Workbench getInstance() {
@@ -30,5 +32,6 @@ public class Workbench {
         shapes.clear();
         lastShape = null;
         selectedShape = null;
+        unknownGraph = null;
     }
 }
