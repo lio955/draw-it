@@ -25,7 +25,7 @@ public class ActionDrawShape extends AbstractAction {
                 && Workbench.getInstance().getSketch().getFirstStroke().getPoints().size() > 0) {
             try {
                 IRecognitionResult result = recognizer.recognize(Workbench.getInstance().getSketch().getFirstStroke());
-                Application.getInstance().getMainPanel().getConsoleOutput().addText("paleo says: " + result.getBestShape().getInterpretation().label);
+                //Application.getInstance().getMainPanel().getConsoleOutput().addText("paleo says: " + result.getBestShape().getInterpretation().label);
                 AbstractShape abstractShape = new AbstractShape(result.getBestShape());
                 Workbench.getInstance().getShapes().add(abstractShape);
                 Workbench.getInstance().setLastShape(abstractShape);

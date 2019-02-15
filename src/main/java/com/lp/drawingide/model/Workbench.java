@@ -32,6 +32,7 @@ public class Workbench {
         shapes.clear();
         lastShape = null;
         selectedShape = null;
-        unknownGraph = null;
+        unknownGraph.getRelationships().clear();
+        unknownGraph.getNodes().clear();
     }
 }

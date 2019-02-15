@@ -2,6 +2,7 @@ package com.lp.drawingide.gui;
 
 import com.lp.drawingide.action.ActionDrawShape;
 import com.lp.drawingide.action.ActionSelectShape;
+import com.lp.drawingide.model.AbstractShape;
 import com.lp.drawingide.model.Enclosing;
 import com.lp.drawingide.model.Workbench;
 import org.jdesktop.swingx.JXPanel;
@@ -86,12 +87,13 @@ public class Canvas extends JXPanel {
                 undo();
                 if (Workbench.getInstance().getLastShape() != null){
                     ShapePainter.draw(g, Workbench.getInstance().getLastShape().getShape().toSVGShape(), drawStyle);
-                    Enclosing enclosing = Workbench.getInstance().getLastShape().getEnclosing();
+                   /* Enclosing enclosing = Workbench.getInstance().getLastShape().getEnclosing();
+
                     g.drawRect(enclosing.getXMin(), enclosing.getYMin(), enclosing.getXMax() - enclosing.getXMin(), enclosing.getYMax() - enclosing.getYMin());
                     if (Workbench.getInstance().getLastShape().getPointA() != null) {
                         g.drawRect(Workbench.getInstance().getLastShape().getPointA().getX(), Workbench.getInstance().getLastShape().getPointA().getY(), 10, 10);
                         g.drawRect(Workbench.getInstance().getLastShape().getPointB().getX(), Workbench.getInstance().getLastShape().getPointB().getY(), 10, 10);
-                    }
+                    }*/
                 }
                 if (g != null) {
                     repaint();
@@ -284,6 +286,17 @@ public class Canvas extends JXPanel {
             }
 
             shape = null;
+        }
+    }
+    public void redrawSketch () {
+        for(AbstractShape abstractShape : Workbench.getInstance().getShapes()) {
+
+            ShapePainter.draw(g, abstractShape.getShape().toSVGShape(), drawStyle);
+
+
+        }
+        if (g != null) {
+            repaint();
         }
     }
 }

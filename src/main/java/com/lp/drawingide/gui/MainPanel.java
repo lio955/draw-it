@@ -3,6 +3,8 @@ package com.lp.drawingide.gui;
 import com.lp.drawingide.action.ActionClear;
 import com.lp.drawingide.action.ActionExit;
 import com.lp.drawingide.action.ActionTypeText;
+import com.lp.drawingide.action.ActionUndo;
+import com.lp.drawingide.application.Application;
 import lombok.Data;
 import net.miginfocom.swing.MigLayout;
 import org.jdesktop.swingx.JXFrame;
@@ -24,6 +26,7 @@ public class MainPanel extends JXFrame {
 
     private ActionTypeText actionTypeText;
     private ActionClear actionClear;
+    private ActionUndo  actionUndo;
 
     public MainPanel() {
         super();
@@ -54,6 +57,7 @@ public class MainPanel extends JXFrame {
         actionTypeText = new ActionTypeText();
         setFocusable(true);
         actionClear = new ActionClear();
+        actionUndo= new ActionUndo();
         addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent keyEvent) {
@@ -73,6 +77,13 @@ public class MainPanel extends JXFrame {
                      actionClear.actionPerformed(null);
 
                 }
+               /* if (keyEvent.getKeyCode() == keyEvent.VK_DELETE
+                        && keyEvent.isControlDown()) {
+                    actionUndo.actionPerformed(null);
+                    canvas.clear();
+                    canvas.redrawSketch();
+
+                }*/
             }
 
             @Override
