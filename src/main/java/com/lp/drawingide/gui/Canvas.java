@@ -3,6 +3,8 @@ package com.lp.drawingide.gui;
 import com.lp.drawingide.action.ActionDrawShape;
 import com.lp.drawingide.model.Workbench;
 import org.jdesktop.swingx.JXPanel;
+import org.openawt.draw.awt.ShapePainter;
+import org.openawt.svg.Style;
 
 import javax.swing.event.MouseInputAdapter;
 import java.awt.*;
@@ -15,6 +17,7 @@ public class Canvas extends JXPanel {
     private int X1, Y1, X2, Y2;
 
     private ActionDrawShape actionDrawShape = new ActionDrawShape();
+    protected Style drawStyle = new Style().setFill(org.openawt.Color.NONE).setStroke(org.openawt.Color.BLACK);
 
     private srl.core.sketch.Stroke currentStroke = new srl.core.sketch.Stroke();
 
@@ -78,7 +81,7 @@ public class Canvas extends JXPanel {
                 Workbench.getInstance().getSketch().remove(currentStroke);
                 currentStroke = new srl.core.sketch.Stroke();
                 undo();
-
+                ShapePainter.draw(g, Workbench.getInstance().getLastShape().getShape().toSVGShape(),drawStyle);
                 if (g != null) {
                     repaint();
                 }

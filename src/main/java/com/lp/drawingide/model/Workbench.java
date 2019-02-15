@@ -8,7 +8,8 @@ import java.util.List;
 
 @Data
 public class Workbench {
-    private List<Shape> shapes;
+    private List<AbstractShape> shapes;
+    private AbstractShape lastShape;
     private Sketch sketch;
     private static Workbench instance;
 
