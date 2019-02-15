@@ -25,6 +25,7 @@ public class ActionDrawShape extends AbstractAction {
                 AbstractShape abstractShape = new AbstractShape(result.getBestShape());
                 Workbench.getInstance().getShapes().add(abstractShape);
                 Workbench.getInstance().setLastShape(abstractShape);
+                Workbench.getInstance().setSelectedShape(abstractShape);
             } catch (Exception e) {
                 e.printStackTrace();
             }

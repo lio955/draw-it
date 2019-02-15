@@ -3,7 +3,6 @@ package com.lp.drawingide.model;
 import lombok.Data;
 import srl.core.sketch.Sketch;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +10,7 @@ import java.util.List;
 public class Workbench {
     private List<AbstractShape> shapes;
     private AbstractShape lastShape;
+    private AbstractShape selectedShape;
     private Sketch sketch;
     private static Workbench instance;
 

@@ -1,6 +1,7 @@
 package com.lp.drawingide.gui;
 
 import com.lp.drawingide.action.ActionDrawShape;
+import com.lp.drawingide.action.ActionSelectShape;
 import com.lp.drawingide.model.Enclosing;
 import com.lp.drawingide.model.Workbench;
 import org.jdesktop.swingx.JXPanel;
@@ -18,6 +19,7 @@ public class Canvas extends JXPanel {
     private int X1, Y1, X2, Y2;
 
     private ActionDrawShape actionDrawShape = new ActionDrawShape();
+    private ActionSelectShape actionSelectShape =  new ActionSelectShape();
     protected Style drawStyle = new Style().setFill(org.openawt.Color.NONE).setStroke(org.openawt.Color.BLACK);
 
     private srl.core.sketch.Stroke currentStroke = new srl.core.sketch.Stroke();
@@ -91,6 +93,11 @@ public class Canvas extends JXPanel {
                     repaint();
                 }
 
+            }
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                actionSelectShape.actionPerformed(new ActionEvent(e,1,null));
             }
         };
 

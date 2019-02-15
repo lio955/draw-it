@@ -13,7 +13,8 @@ public class AbstractShape {
 
     public AbstractShape(final Shape shape) throws InvalidShapeException {
         this.shape = shape;
-        enclosing = new Enclosing();
+        this.enclosing = new Enclosing();
+        this.text = "";
         if (shape.getPoints().size() > 0) {
             enclosing.setXMin((int) shape.getPoints().get(0).getX());
             enclosing.setYMin((int) shape.getPoints().get(0).getY());

@@ -1,11 +1,13 @@
 package com.lp.drawingide.gui;
 
+import com.lp.drawingide.action.ActionTypeText;
 import lombok.Data;
 import net.miginfocom.swing.MigLayout;
 import org.jdesktop.swingx.JXFrame;
 import org.jdesktop.swingx.JXPanel;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -18,6 +20,7 @@ public class MainPanel extends JXFrame {
     private com.lp.drawingide.gui.Canvas canvas;
     private ConsoleOutput consoleOutput;
     private KeyListener keyListener;
+    private ActionTypeText actionTypeText;
 
     public MainPanel() {
         super();
@@ -45,12 +48,12 @@ public class MainPanel extends JXFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         pack();
         setLocationRelativeTo(null);
-
+        actionTypeText = new ActionTypeText();
         setFocusable(true);
         keyListener = new KeyListener() {
             @Override
             public void keyTyped(KeyEvent keyEvent) {
-                System.out.println(keyEvent.getKeyChar());
+                actionTypeText.actionPerformed(new ActionEvent(keyEvent, 1, null));
             }
 
             @Override
