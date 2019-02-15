@@ -88,6 +88,10 @@ public class Canvas extends JXPanel {
                     ShapePainter.draw(g, Workbench.getInstance().getLastShape().getShape().toSVGShape(), drawStyle);
                     Enclosing enclosing = Workbench.getInstance().getLastShape().getEnclosing();
                     g.drawRect(enclosing.getXMin(), enclosing.getYMin(), enclosing.getXMax() - enclosing.getXMin(), enclosing.getYMax() - enclosing.getYMin());
+                    if (Workbench.getInstance().getLastShape().getPointA() != null) {
+                        g.drawRect(Workbench.getInstance().getLastShape().getPointA().getX(), Workbench.getInstance().getLastShape().getPointA().getY(), 10, 10);
+                        g.drawRect(Workbench.getInstance().getLastShape().getPointB().getX(), Workbench.getInstance().getLastShape().getPointB().getY(), 10, 10);
+                    }
                 }
                 if (g != null) {
                     repaint();

@@ -24,8 +24,8 @@ public class AbstractShape {
             enclosing.setXMax((int) shape.getPoints().get(0).getX());
             enclosing.setYMax((int) shape.getPoints().get(0).getY());
 
-            if (!Constant.LINE.equals(shape.getInterpretation().label)
-                    && Constant.ARROW.equals(shape.getInterpretation().label)) {
+            if (Constant.LINE.equals(shape.getInterpretation().label)
+                    || Constant.ARROW.equals(shape.getInterpretation().label)) {
                 pointA = new PointXY();
                 pointA.setX((int) shape.getPoints().get(0).getX());
                 pointA.setY((int) shape.getPoints().get(0).getY());
