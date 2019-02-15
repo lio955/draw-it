@@ -14,7 +14,7 @@ public class CypherDataGenerator {
 
         for (UnknownRelationship unknownRelationship : unknownGraph.getRelationships()) {
             cypher = cypher + "\n MATCH (A : " + unknownRelationship.getNodeA().getAbstractShape().getText() + ")";
-            cypher = cypher + "\n MATCH (B : " + unknownRelationship.getNodeB().getAbstractShape().getText() + ")";
+            cypher = cypher + "\n     , (B : " + unknownRelationship.getNodeB().getAbstractShape().getText() + ")";
             cypher = cypher + "\n CREATE (A)-[:" + unknownRelationship.getAbstractShape().getText() + "]->(B);";
         }
         return cypher;
