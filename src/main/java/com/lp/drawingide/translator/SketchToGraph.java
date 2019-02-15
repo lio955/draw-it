@@ -4,18 +4,17 @@ import com.lp.drawingide.model.AbstractShape;
 import com.lp.drawingide.model.UnknownGraph;
 import com.lp.drawingide.model.UnknownNode;
 import com.lp.drawingide.model.UnknownRelationship;
+import com.lp.drawingide.util.Constant;
 
 public class SketchToGraph {
 
-    private static final String LINE = "Line";
-    private static final String ARROW = "Arrow";
 
 
     public static UnknownNode buildNode(final AbstractShape abstractShape) {
         UnknownNode unknownNode = null;
 
-        if (!LINE.equals(abstractShape.getShape().getInterpretation().label)
-                && ARROW.equals(abstractShape.getShape().getInterpretation().label)) {
+        if (!Constant.LINE.equals(abstractShape.getShape().getInterpretation().label)
+                && Constant.ARROW.equals(abstractShape.getShape().getInterpretation().label)) {
             unknownNode = new UnknownNode();
             unknownNode.setUnstructuredData(abstractShape.getText());
 

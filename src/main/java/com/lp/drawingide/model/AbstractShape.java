@@ -1,5 +1,6 @@
 package com.lp.drawingide.model;
 
+import com.lp.drawingide.util.Constant;
 import lombok.Data;
 import srl.core.sketch.Point;
 import srl.core.sketch.Shape;
@@ -7,6 +8,8 @@ import srl.core.sketch.Shape;
 @Data
 public class AbstractShape {
     private Enclosing enclosing;
+    private PointXY pointA;
+    private PointXY pointB;
     private Shape shape;
     private String text;
 
@@ -20,6 +23,18 @@ public class AbstractShape {
             enclosing.setYMin((int) shape.getPoints().get(0).getY());
             enclosing.setXMax((int) shape.getPoints().get(0).getX());
             enclosing.setYMax((int) shape.getPoints().get(0).getY());
+
+            if (!Constant.LINE.equals(shape.getInterpretation().label)
+                    && Constant.ARROW.equals(shape.getInterpretation().label)) {
+                pointA = new PointXY();
+                pointA.setX((int) shape.getPoints().get(0).getX());
+                pointA.setY((int) shape.getPoints().get(0).getY());
+                pointB = new PointXY();
+                pointB.setX((int) shape.getPoints().get(shape.getPoints().size() - 1).getX());
+                pointB.setY((int) shape.getPoints().get(shape.getPoints().size() - 1).getY());
+            }
+
+
             for (Point point : shape.getPoints()) {
                 if (point.getX() > enclosing.getXMax()) {
                     enclosing.setXMax((int) point.getX());
