@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>lu.ing.data</groupId>
+    <artifactId>drawing-ide</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <organization>
+        <name>ING Luxembourg</name>
+        <url>www.ing.lu</url>
+    </organization>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>7</source>
+                    <target>7</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <developers>
+        <developer>
+            <name>Lionel Protin</name>
+            <email>lionel.protin@ing.lu</email>
+            <roles>
+                <role>Coding architect</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <properties>
+        <miglayout-swing.version>5.1</miglayout-swing.version>
+        <strontium.version>1.0.0</strontium.version>
+        <swingx.version>1.6.1</swingx.version>
+        <lombok.version>1.18.4</lombok.version>
+    </properties>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>com.miglayout</groupId>
+            <artifactId>miglayout-swing</artifactId>
+            <version>${miglayout-swing.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>LATEST</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.eyce9000</groupId>
+            <artifactId>sr-core</artifactId>
+            <version>${strontium.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.eyce9000</groupId>
+            <artifactId>sr-rec</artifactId>
+            <version>${strontium.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.eyce9000</groupId>
+            <artifactId>sr-ui-swing</artifactId>
+            <version>${strontium.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.swinglabs</groupId>
+            <artifactId>swingx</artifactId>
+            <version>${swingx.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+
+    </dependencies>
+</project>
