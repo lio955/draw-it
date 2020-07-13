@@ -4,6 +4,8 @@ import com.lp.drawingide.model.Enclosing;
 
 public class Util {
 
+
+    //TODO use enum !!
     public static final String LINE = "Line";
     public static final String ARROW = "Arrow";
     public static final String ELLIPSE = "Ellipse";

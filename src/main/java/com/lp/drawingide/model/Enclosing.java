@@ -4,7 +4,7 @@ import lombok.Setter;
 
 @Setter
 public class Enclosing {
-    private static int EPSILON = 20;
+    private static final int EPSILON = 20;
 
     private int xMin;
     private int yMin;

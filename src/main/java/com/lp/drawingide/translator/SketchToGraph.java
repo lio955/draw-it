@@ -38,6 +38,9 @@ public class SketchToGraph {
             }
 
         }
+        if (unknownRelationship.getNodeA() == null || unknownRelationship.getNodeB() == null) {
+            unknownRelationship = null;
+        }
         return unknownRelationship;
     }
 }
